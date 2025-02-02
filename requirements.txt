@@ -1,0 +1,9 @@
+fastapi==0.115.7
+numpy==1.23.5
+nltk==3.8.1
+pandas==1.5.3
+psycopg2==2.9.9
+pydantic==2.10.6
+torch==2.0.1
+uvicorn==0.34.0
+

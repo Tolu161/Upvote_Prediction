@@ -1,0 +1,33 @@
+`
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upvote Predictor</title>
+    <script>
+        async function predictUpvotes() {
+            const title = document.getElementById("title").value;
+            const author = document.getElementById("author").value;
+            const timestamp = new Date().toISOString();
+
+            const response = await fetch("/how_many_upvotes", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ author, title, timestamp })
+            });
+
+            const result = await response.json();
+            document.getElementById("result").innerText = `Predicted Upvotes: ${result.upvotes}`;
+        }
+    </script>
+</head>
+<body>
+    <h2>Upvote Predictor</h2>
+    <label>Author: <input type="text" id="author"></label><br>
+    <label>Title: <input type="text" id="title"></label><br>
+    <button onclick="predictUpvotes()">Predict</button>
+    <p id="result"></p>
+</body>
+</html>
